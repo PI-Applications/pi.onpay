@@ -1,6 +1,11 @@
 ﻿using PI.OnPay.Models;
 using System;
 using System.Collections.Generic;
+using System.IO;
+using System.Linq;
+using System.Security.Cryptography;
+using System.Text;
+using System.Web;
 
 namespace PI.OnPay
 {
@@ -109,12 +114,36 @@ namespace PI.OnPay
             };
 
             // Generate HMAC
-            var hmac = "todo-todo";
+            var hmac = GenerateSHA1(windowParams, pw.WindowSecret);
             windowParams.Add("onpay_hmac_sha1", hmac);
-            
-            // Generate html
 
-            return "todo";
+            // Generate html
+            var inputFields = "";
+            foreach (var ip in windowParams.OrderBy(x => x.Key))
+            {
+                var field = "<input type=\"hidden\" name=\"" + ip.Key + "\" value=\"" + ip.Value + "\" />";
+                inputFields += field + Environment.NewLine;
+            }
+
+            return inputFields;
+        }
+
+        private static string GenerateSHA1(Dictionary<string, string> inputParams, string key)
+        {
+            var orderedParams = inputParams.Where(x => x.Key.StartsWith("onpay_")).OrderBy(x => x.Key);
+            var paramsAsQuery = string.Join("&", orderedParams.Select(x => x.Key + "=" + HttpUtility.UrlEncode(x.Value))).ToLower();
+
+            var generatedSHA1 = Encode(paramsAsQuery, Encoding.UTF8.GetBytes(key));
+
+            return generatedSHA1;
+        }
+
+        private static string Encode(string input, byte[] key)
+        {
+            HMACSHA1 myhmacsha1 = new HMACSHA1(key);
+            byte[] byteArray = Encoding.ASCII.GetBytes(input);
+            MemoryStream stream = new MemoryStream(byteArray);
+            return myhmacsha1.ComputeHash(stream).Aggregate("", (s, e) => s + String.Format("{0:x2}", e), s => s);
         }
     }
 }
