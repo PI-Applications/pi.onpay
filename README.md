@@ -11,12 +11,12 @@ A .NET SDK for developing against the OnPay.io platform.
 
 ## API usage
 
-### Getting started with an access token
+### Already has access token
 ```csharp
 var onPayApi = new OnPayApi("accessToken");
 ```
 
-### Getting started without an access token
+### Need a access token
 ```csharp
 var onPayApi = new OnPayApi();
 
@@ -26,7 +26,7 @@ var onPayApi = new OnPayApi();
 var authorizeUrl = await onPayApi.Authentication.GetAuthorizeUrl("1234567890", "clientId", "https://localhost:1337/onpay-auth");
 ```
 
-### Authentication
+#### Get access token
 ```csharp
 // Get access token by authorization code
 var authorizationCode = Request.QueryString["code"];
