@@ -8,6 +8,11 @@ namespace PI.OnPay
         private readonly string _accessToken;
         private readonly IRestClient _resourceClient;
 
+        public OnPayApi() : this("")
+        {
+
+        }
+
         public OnPayApi(string accessToken)
         {
             _accessToken = accessToken;
