@@ -1,5 +1,4 @@
-﻿using PI.OnPay.Models;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 
 namespace PI.OnPay
 {

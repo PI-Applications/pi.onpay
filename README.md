@@ -45,14 +45,12 @@ await onPayApi.Subscriptions.AuthorizeSubscription(1234, 100, "OrderId");
 
 ## Payment window usage
 
-___WARNING__: Not fully supported yet!_
-
-Creating parameters and HTML for the payment window is done through a fluent flow.
+Creating parameters for the payment window is done through a fluent flow.
 
 ### Getting started
 ```csharp
 // Not all parameters is required, it's just shown as an example
-var paymentWindowHtml = new OnPayPaymentWindow("gatewayId", "windowSecret")
+var windowParameters = new OnPayPaymentWindow("gatewayId", "windowSecret")
                                 .SetCurrency("DKK")
                                 .SetAmount(123)
                                 .SetReference("unique-ref-9999")
@@ -60,20 +58,24 @@ var paymentWindowHtml = new OnPayPaymentWindow("gatewayId", "windowSecret")
                                 .SetAcceptUrl("https://localhost:1337/payment/accept")
                                 .SetDeclineUrl("https://localhost:1337/payment/decline")
                                 .SetDesign("DesignName")
-                                .SetMethod("payment")
-                                .SetType("card")
-                                .SetLanguage("da")
+                                .SetMethod(OnPayMethod.Payment)
+                                .SetType(OnPayType.Card)
+                                .SetLanguage(OnPayLanguage.DA)
                                 .EnableTestMode() 
                                 .Enable3DSecure()
                                 .AddCustomParameter("custom-param","custom-value")
-                                .GenerateHtml();
+                                .GenerateParamters();
 ```
 
-### Use the generated HTML
+### Use the generated parameters
 ```html
 <!-- MVC example -->
 <form action="https://onpay.io/window/v3/" method="post" id="onPayForm">
-    @Model.PaymentWindowHtml
-    <input type="submit" value="Go to payment window">
+	@foreach(KeyValuePair<string, string> windowParam in Model.Parameters)
+	{
+		<input type="hidden" name="@windowParam.Key" value="@windowParam.Value" />
+	}
+
+	 <input type="submit" value="Go to payment window">
 </form>
 ```

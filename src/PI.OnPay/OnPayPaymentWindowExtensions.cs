@@ -53,21 +53,21 @@ namespace PI.OnPay
             return pw;
         }
 
-        public static OnPayPaymentWindow SetMethod(this OnPayPaymentWindow pw, string method)
+        public static OnPayPaymentWindow SetMethod(this OnPayPaymentWindow pw, OnPayMethod method)
         {
-            pw.Method = method;
+            pw.Method = method.ToString().ToLower();
             return pw;
         }
 
-        public static OnPayPaymentWindow SetType(this OnPayPaymentWindow pw, string type)
+        public static OnPayPaymentWindow SetType(this OnPayPaymentWindow pw, OnPayType type)
         {
-            pw.Type = type;
+            pw.Type = type.ToString().ToLower();
             return pw;
         }
 
-        public static OnPayPaymentWindow SetLanguage(this OnPayPaymentWindow pw, string language)
+        public static OnPayPaymentWindow SetLanguage(this OnPayPaymentWindow pw, OnPayLanguage language)
         {
-            pw.Language = language;
+            pw.Language = language.ToString().ToLower();
             return pw;
         }
 
@@ -93,7 +93,7 @@ namespace PI.OnPay
             return pw;
         }
 
-        public static string GenerateHtml(this OnPayPaymentWindow pw)
+        public static Dictionary<string, string> GenerateParamters(this OnPayPaymentWindow pw)
         {
             // Setup parameter list
             var windowParams = new Dictionary<string, string>
@@ -116,16 +116,8 @@ namespace PI.OnPay
             // Generate HMAC
             var hmac = GenerateSHA1(windowParams, pw.WindowSecret);
             windowParams.Add("onpay_hmac_sha1", hmac);
-
-            // Generate html
-            var inputFields = "";
-            foreach (var ip in windowParams.OrderBy(x => x.Key))
-            {
-                var field = "<input type=\"hidden\" name=\"" + ip.Key + "\" value=\"" + ip.Value + "\" />";
-                inputFields += field + Environment.NewLine;
-            }
-
-            return inputFields;
+            
+            return windowParams;
         }
 
         private static string GenerateSHA1(Dictionary<string, string> inputParams, string key)
