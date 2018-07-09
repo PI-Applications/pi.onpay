@@ -3,16 +3,15 @@
 A .NET SDK for developing against the OnPay.io platform.
 
 ## Requirements
-- .NET Framework 4.5.2
-- .NET Standard 2.0
+.NET Framework 4.5.2 or .NET Standard 2.0
 
 ## Getting started
-```
+```csharp
 var onPayClient = new OnPayClient("accessToken");
 ```
 
 ## Transactions
-```
+```csharp
 // Get transaction details
 await onPayClient.Transactions.GetTransaction(1234);
 
@@ -29,7 +28,7 @@ await onPayClient.Transactions.CancelTransaction(1234);
 ```
 
 ## Subscriptions
-```
+```csharp
 // Get subscription details
 await onPayClient.Subscriptions.GetSubscription(1234);
 
