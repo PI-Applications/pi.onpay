@@ -15,11 +15,11 @@ var onPayClient = new OnPayClient("accessToken");
 // Get transaction details
 await onPayClient.Transactions.GetTransaction(1234);
 
-// Capture transaction - full amount or some
+// Capture transaction - full amount or partial
 await onPayClient.Transactions.CaptureTransaction(1234);
 await onPayClient.Transactions.CaptureTransaction(1234, 100);
 
-// Refund transaction - full amount or some
+// Refund transaction - full amount or partial
 await onPayClient.Transactions.RefundTransaction(1234);
 await onPayClient.Transactions.RefundTransaction(1234, 100);
 
