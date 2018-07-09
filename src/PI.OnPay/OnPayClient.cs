@@ -1,12 +1,9 @@
-﻿using PI.OnPay.Models;
+﻿using PI.OnPay.Interfaces;
 using RestSharp;
-using System;
-using System.Net;
-using System.Threading.Tasks;
 
 namespace PI.OnPay
 {
-    public class OnPayClient
+    public class OnPayClient : IOnPayClient
     {
         private readonly string _accessToken;
         private readonly IRestClient _resourceClient;
@@ -25,7 +22,7 @@ namespace PI.OnPay
             _resourceClient = resourceClient;
         }
 
-        public TransactionResources Transactions
+        public ITransactionResources Transactions
         {
             get
             {
@@ -33,7 +30,7 @@ namespace PI.OnPay
             }
         }
 
-        public SubscriptionResources Subscriptions
+        public ISubscriptionResources Subscriptions
         {
             get
             {

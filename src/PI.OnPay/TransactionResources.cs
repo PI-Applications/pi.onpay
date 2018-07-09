@@ -1,12 +1,12 @@
-﻿using PI.OnPay.Models;
+﻿using PI.OnPay.Interfaces;
+using PI.OnPay.Models;
 using RestSharp;
 using System;
-using System.Net;
 using System.Threading.Tasks;
 
 namespace PI.OnPay
 {
-    public class TransactionResources
+    public class TransactionResources : ITransactionResources
     {
         private readonly IRestClient _resourceClient;
 
