@@ -5,79 +5,79 @@ namespace PI.OnPay
 {
     public static class OnPayPaymentWindowExtensions
     {
-        public static PaymentWindow SetCurrency(this PaymentWindow pw, string currency)
+        public static OnPayPaymentWindow SetCurrency(this OnPayPaymentWindow pw, string currency)
         {
             pw.Currency = currency;
             return pw;
         }
 
-        public static PaymentWindow SetAmount(this PaymentWindow pw, decimal amount)
+        public static OnPayPaymentWindow SetAmount(this OnPayPaymentWindow pw, decimal amount)
         {
             pw.Amount = Convert.ToInt32(amount * 100);
             return pw;
         }
 
-        public static PaymentWindow SetCallbackUrl(this PaymentWindow pw, string callbackUrl)
+        public static OnPayPaymentWindow SetCallbackUrl(this OnPayPaymentWindow pw, string callbackUrl)
         {
             pw.CallbackUrl = callbackUrl;
             return pw;
         }
 
-        public static PaymentWindow SetAcceptUrl(this PaymentWindow pw, string acceptUrl)
+        public static OnPayPaymentWindow SetAcceptUrl(this OnPayPaymentWindow pw, string acceptUrl)
         {
             pw.AcceptUrl = acceptUrl;
             return pw;
         }
 
-        public static PaymentWindow SetDeclineUrl(this PaymentWindow pw, string declineUrl)
+        public static OnPayPaymentWindow SetDeclineUrl(this OnPayPaymentWindow pw, string declineUrl)
         {
             pw.DeclineUrl = declineUrl;
             return pw;
         }
 
-        public static PaymentWindow SetReference(this PaymentWindow pw, string reference)
+        public static OnPayPaymentWindow SetReference(this OnPayPaymentWindow pw, string reference)
         {
             pw.Reference = reference;
             return pw;
         }
 
-        public static PaymentWindow SetDesign(this PaymentWindow pw, string design)
+        public static OnPayPaymentWindow SetDesign(this OnPayPaymentWindow pw, string design)
         {
             pw.Design = design;
             return pw;
         }
 
-        public static PaymentWindow SetMethod(this PaymentWindow pw, string method)
+        public static OnPayPaymentWindow SetMethod(this OnPayPaymentWindow pw, string method)
         {
             pw.Method = method;
             return pw;
         }
 
-        public static PaymentWindow SetType(this PaymentWindow pw, string type)
+        public static OnPayPaymentWindow SetType(this OnPayPaymentWindow pw, string type)
         {
             pw.Type = type;
             return pw;
         }
 
-        public static PaymentWindow SetLanguage(this PaymentWindow pw, string language)
+        public static OnPayPaymentWindow SetLanguage(this OnPayPaymentWindow pw, string language)
         {
             pw.Language = language;
             return pw;
         }
 
-        public static PaymentWindow EnableTestMode(this PaymentWindow pw)
+        public static OnPayPaymentWindow EnableTestMode(this OnPayPaymentWindow pw)
         {
             pw.TestMode = true;
             return pw;
         }
 
-        public static PaymentWindow Enable3DSecure(this PaymentWindow pw)
+        public static OnPayPaymentWindow Enable3DSecure(this OnPayPaymentWindow pw)
         {
             pw.SecureEnabled = true;
             return pw;
         }
 
-        public static PaymentWindow AddCustomParameter(this PaymentWindow pw, string key, string value)
+        public static OnPayPaymentWindow AddCustomParameter(this OnPayPaymentWindow pw, string key, string value)
         {
             if (pw.CustomKeys == null)
                 pw.CustomKeys = new System.Collections.Generic.Dictionary<string, string>();
@@ -85,6 +85,17 @@ namespace PI.OnPay
             pw.CustomKeys.Add(key, value);
 
             return pw;
+        }
+
+        public static string GenerateHtml(this OnPayPaymentWindow pw)
+        {
+            // Generate HMAC
+
+            // Generate parameter list
+
+            // Generate html
+
+            return "todo";
         }
     }
 }

@@ -1,35 +1,31 @@
 ﻿using PI.OnPay.Models;
+using System.Collections.Generic;
 
 namespace PI.OnPay
 {
     public class OnPayPaymentWindow
     {
-        private readonly string _gatewayId;
-        private readonly string _windowSecret;
-
         public OnPayPaymentWindow(string gatewayId, string windowSecret)
         {
-            _gatewayId = gatewayId;
-            _windowSecret = windowSecret;
+            GatewayId = gatewayId;
+            WindowSecret = windowSecret;            
         }
 
-        public PaymentWindow CreateWindow()
-        {
-            return new PaymentWindow
-            {
-                GatewayId = _gatewayId
-            };
-        }
-
-        public string GenerateWindowHtml(PaymentWindow window)
-        {
-            // Generate hash
-
-            // Generate html
-            
-            // return it
-
-            return null;
-        }
+        public string GatewayId { get; internal set; }
+        public string WindowSecret { internal get; set; }
+        public string HMAC { internal get; set; }
+        public string Currency { get; set; }
+        public int Amount { get; set; }
+        public string Reference { get; set; }
+        public string AcceptUrl { get; set; }
+        public string DeclineUrl { get; set; }
+        public string CallbackUrl { get; set; }
+        public string Type { get; set; }
+        public string Method { get; set; }
+        public bool SecureEnabled { get; set; }
+        public string Design { get; set; }
+        public string Language { get; set; }
+        public bool TestMode { get; set; }
+        public Dictionary<string, string> CustomKeys { get; set; }
     }
 }

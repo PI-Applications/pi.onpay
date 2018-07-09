@@ -51,25 +51,19 @@ Creating parameters and HTML for the payment window is done through a fluent flo
 
 ### Getting started
 ```csharp
-var onPayPaymentWindow = new OnPayPaymentWindow("gatewayId", "windowSecret");
-
-// Setup window parameters
-// Not all parameters is required
-var myWindow = onPayPaymentWindow.CreateWindow()
-                                 .SetCurrency("DKK")
-                                 .SetAmount(123)
-                                 .SetReference("unique-ref-9999")
-                                 .SetCallbackUrl("https://localhost:1337/payment/callback")
-                                 .SetAcceptUrl("https://localhost:1337/payment/accept")
-                                 .SetDeclineUrl("https://localhost:1337/payment/decline")
-                                 .SetDesign("DesignName")
-                                 .SetMethod("payment")
-                                 .SetType("card")
-                                 .SetLanguage("da")
-                                 .EnableTestMode() 
-                                 .Enable3DSecure()
-                                 .AddCustomParameter("custom-param","custom-value");
-
-// Generate HTML
-var myHtml = onPayPaymentWindow.GenerateWindowHtml(myWindow);
+var paymentWindowHtml = new OnPayPaymentWindow("gatewayId", "windowSecret")
+                                .SetCurrency("DKK")
+                                .SetAmount(123)
+                                .SetReference("unique-ref-9999")
+                                .SetCallbackUrl("https://localhost:1337/payment/callback")
+                                .SetAcceptUrl("https://localhost:1337/payment/accept")
+                                .SetDeclineUrl("https://localhost:1337/payment/decline")
+                                .SetDesign("DesignName")
+                                .SetMethod("payment")
+                                .SetType("card")
+                                .SetLanguage("da")
+                                .EnableTestMode() 
+                                .Enable3DSecure()
+                                .AddCustomParameter("custom-param","custom-value")
+                                .GenerateHtml();
 ```
