@@ -1,7 +1,5 @@
 # OnPay.io .NET SDK
 
-![Build](https://pi-applications-dk.visualstudio.com/8c43066a-ced2-41f9-822b-b5a7154a9b31/_apis/build/status/76)
-
 A .NET SDK for developing against the OnPay.io platform.
 
 ## Requirements
