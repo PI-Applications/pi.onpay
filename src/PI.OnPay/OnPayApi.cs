@@ -3,12 +3,12 @@ using RestSharp;
 
 namespace PI.OnPay
 {
-    public class OnPayClient : IOnPayClient
+    public class OnPayApi : IOnPayApi
     {
         private readonly string _accessToken;
         private readonly IRestClient _resourceClient;
 
-        public OnPayClient(string accessToken)
+        public OnPayApi(string accessToken)
         {
             _accessToken = accessToken;
 
@@ -16,7 +16,7 @@ namespace PI.OnPay
             _resourceClient.AddDefaultHeader("Authorization", "Bearer " + _accessToken);
         }
 
-        public OnPayClient(string accessToken, IRestClient resourceClient)
+        public OnPayApi(string accessToken, IRestClient resourceClient)
         {
             _accessToken = accessToken;
             _resourceClient = resourceClient;

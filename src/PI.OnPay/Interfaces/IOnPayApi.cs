@@ -1,6 +1,6 @@
 ﻿namespace PI.OnPay.Interfaces
 {
-    public interface IOnPayClient
+    public interface IOnPayApi
     {
         ISubscriptionResources Subscriptions { get; }
         ITransactionResources Transactions { get; }
