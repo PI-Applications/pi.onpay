@@ -22,6 +22,14 @@ namespace PI.OnPay
             _resourceClient = resourceClient;
         }
 
+        public IAuthenticationResources Authentication
+        {
+            get
+            {
+                return new AuthenticationResources(_resourceClient);
+            }
+        }
+
         public ITransactionResources Transactions
         {
             get

@@ -7,11 +7,25 @@ A .NET SDK for developing against the OnPay.io platform.
 
 ## API usage
 
-To use the API an access token is needed. In future this package will contain helpers for this.
-
 ### Getting started
 ```csharp
 var onPayApi = new OnPayApi("accessToken");
+```
+
+### Authentication
+```csharp
+// Get authorize url, and redirect to url
+// Read 'code' from query on callback and use in next step
+var authorizeUrl = await onPayApi.Authentication.GetAuthorizeUrl("1234567890", "clientId", "https://localhost:1337/onpay-auth");
+
+// Get access token by authorization code
+var authorizationCode = Request.QueryString["code"];
+var response1 = await onPayApi.Authentication.GetAccessTokenByAuthorizationCode("clientId", authorizationCode, "redirectUri");
+var accessToken1 = response1.access_token;
+
+// Get access token by refresh token
+var response2 = await onPayApi.Authentication.GetAccessTokenByRefreshToken("clientId", response1.refresh_token);
+var accessToken2 = response2.access_token; 
 ```
 
 ### Transactions
