@@ -13,12 +13,13 @@
     <PackageVersion>0.0.1</PackageVersion>
     <PackageRequireLicenseAcceptance>false</PackageRequireLicenseAcceptance>
     <PackageTags>OnPay.io OnPay SDK</PackageTags>
-    <PackageProjectUrl>https://www.pi-applications.dk</PackageProjectUrl>
+    <PackageProjectUrl>https://github.com/PI-Applications/pi.onpay</PackageProjectUrl>
   </PropertyGroup>
 
   <PropertyGroup>
     <TargetFrameworks>netstandard2.0;net452</TargetFrameworks>
     <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
+    <RepositoryUrl>https://github.com/PI-Applications/pi.onpay</RepositoryUrl>
   </PropertyGroup>
 
   <ItemGroup>
