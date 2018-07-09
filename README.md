@@ -68,3 +68,12 @@ var paymentWindowHtml = new OnPayPaymentWindow("gatewayId", "windowSecret")
                                 .AddCustomParameter("custom-param","custom-value")
                                 .GenerateHtml();
 ```
+
+### Use the generated HTML
+```html
+<!-- MVC example -->
+<form action="https://onpay.io/window/v3/" method="post" id="onPayForm">
+    @Model.PaymentWindowHtml
+    <input type="submit" value="Go to payment window">
+</form>
+```
