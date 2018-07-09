@@ -1,5 +1,8 @@
 # OnPay.io .NET SDK
 
+[![NuGet](https://img.shields.io/nuget/v/PI.OnPay.svg)](https://www.nuget.org/packages/PI.OnPay/)
+[![NuGet Pre Release](https://img.shields.io/nuget/vpre/PI.OnPay.svg)](https://www.nuget.org/packages/PI.OnPay/)
+
 A .NET SDK for developing against the OnPay.io platform.
 
 ## Requirements
