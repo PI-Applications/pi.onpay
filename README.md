@@ -51,6 +51,7 @@ Creating parameters and HTML for the payment window is done through a fluent flo
 
 ### Getting started
 ```csharp
+// Not all parameters is required, it's just shown as an example
 var paymentWindowHtml = new OnPayPaymentWindow("gatewayId", "windowSecret")
                                 .SetCurrency("DKK")
                                 .SetAmount(123)
