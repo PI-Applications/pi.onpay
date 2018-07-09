@@ -1,5 +1,6 @@
 # OnPay.io .NET SDK
 
+![Visual Studio Team services](https://img.shields.io/vso/build/pi-applications-dk/8c43066a-ced2-41f9-822b-b5a7154a9b31/76.svg)
 [![NuGet](https://img.shields.io/nuget/v/PI.OnPay.svg)](https://www.nuget.org/packages/PI.OnPay/)
 [![NuGet Pre Release](https://img.shields.io/nuget/vpre/PI.OnPay.svg)](https://www.nuget.org/packages/PI.OnPay/)
 
