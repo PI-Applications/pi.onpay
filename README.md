@@ -1,14 +1,44 @@
-# SDK for OnPay.io
+# OnPay.io .NET SDK
 
-Can be used in .Net Framework 4.5.2 or .Net Standard 2.0 projects
+A .NET SDK for developing against the OnPay.io platform.
 
-## Transaction features
-- Get transaction details
-- Capture transaction
-- Cancel transaction
-- Refund transaction
+## Requirements
+- .NET Framework 4.5.2
+- .NET Standard 2.0
 
-## Subscription features
-- Get subscription details
-- Authorize subscription
-- Cancel subscription
+## Getting started
+```
+var onPayClient = new OnPayClient("accessToken");
+```
+
+## Transactions
+```
+// Get transaction details
+await onPayClient.Transactions.GetTransaction(1234);
+
+// Capture transaction - full amount or some
+await onPayClient.Transactions.CaptureTransaction(1234);
+await onPayClient.Transactions.CaptureTransaction(1234, 100);
+
+// Refund transaction - full amount or some
+await onPayClient.Transactions.RefundTransaction(1234);
+await onPayClient.Transactions.RefundTransaction(1234, 100);
+
+// Cancel transaction
+await onPayClient.Transactions.CancelTransaction(1234);
+```
+
+## Subscriptions
+```
+// Get subscription details
+await onPayClient.Subscriptions.GetSubscription(1234);
+
+// Cancel subscription
+await onPayClient.Subscriptions.CancelSubscription(1234);
+
+// Authorize new transaction by subscription
+await onPayClient.Subscriptions.AuthorizeSubscription(1234, 100, "OrderId");
+```
+
+## Payment window
+Not supported yet
