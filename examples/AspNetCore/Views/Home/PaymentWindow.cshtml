@@ -1,0 +1,15 @@
+﻿
+@{
+    ViewData["Title"] = "PaymentWindow";
+}
+
+<h2>PaymentWindow</h2>
+
+<form action="https://onpay.io/window/v3/" method="post" id="onPayForm">
+    @foreach (KeyValuePair<string, string> windowParam in Model.Parameters)
+    {
+        <input type="hidden" name="@windowParam.Key" value="@windowParam.Value" />
+    }
+
+    <input type="submit" value="Go to payment window">
+</form>

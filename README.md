@@ -100,8 +100,8 @@ var windowParameters = new OnPayPaymentWindow("gatewayId", "windowSecret")
                                 .SetAcceptUrl("https://localhost:1337/payment/accept")
                                 .SetDeclineUrl("https://localhost:1337/payment/decline")
                                 .SetDesign("DesignName")
-                                .SetMethod(OnPayMethod.Payment)
-                                .SetType(OnPayType.Card)
+                                .SetMethod(OnPayMethod.Card)
+                                .SetType(OnPayType.Payment)
                                 .SetLanguage(OnPayLanguage.DA)
                                 .EnableTestMode() 
                                 .Enable3DSecure()
@@ -110,6 +110,8 @@ var windowParameters = new OnPayPaymentWindow("gatewayId", "windowSecret")
 ```
 
 ### Use the generated parameters
+[See examples here](examples/)
+
 ```html
 <!-- MVC example -->
 <form action="https://onpay.io/window/v3/" method="post" id="onPayForm">

@@ -2,7 +2,7 @@
 {
     public enum OnPayMethod
     {
-        Payment,
-        Subscription
+        Card,
+        MobilePay
     }
 }

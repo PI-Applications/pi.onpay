@@ -2,7 +2,7 @@
 {
     public enum OnPayType
     {
-        Card,
-        MobilePay
+        Payment,
+        Subscription
     }
 }
