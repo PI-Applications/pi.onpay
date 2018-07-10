@@ -39,6 +39,9 @@ var onPayApi = new OnPayApi("accessToken");
 ### Resource identifier
 
 All single item methods supports identifier as `Guid`, `int` and `string`.
+
+It's recommend using the UUID either as `Guid` or `string`.
+
 ```csharp
 // Guid example
 var transactionGuid = Guid.Parse("e3db3678-836f-11e8-846a-0dd9ab50386c");
@@ -56,30 +59,30 @@ await onPayApi.Transactions.GetTransaction("e3db3678-836f-11e8-846a-0dd9ab50386c
 ### Transactions
 ```csharp
 // Get transaction details
-await onPayApi.Transactions.GetTransaction(1234);
+await onPayApi.Transactions.GetTransaction("e3db3678-836f-11e8-846a-0dd9ab50386c");
 
 // Capture transaction - full amount or partial
-await onPayApi.Transactions.CaptureTransaction(1234);
-await onPayApi.Transactions.CaptureTransaction(1234, 100);
+await onPayApi.Transactions.CaptureTransaction("e3db3678-836f-11e8-846a-0dd9ab50386c");
+await onPayApi.Transactions.CaptureTransaction("e3db3678-836f-11e8-846a-0dd9ab50386c", 100);
 
 // Refund transaction - full amount or partial
-await onPayApi.Transactions.RefundTransaction(1234);
-await onPayApi.Transactions.RefundTransaction(1234, 100);
+await onPayApi.Transactions.RefundTransaction("e3db3678-836f-11e8-846a-0dd9ab50386c");
+await onPayApi.Transactions.RefundTransaction("e3db3678-836f-11e8-846a-0dd9ab50386c", 100);
 
 // Cancel transaction
-await onPayApi.Transactions.CancelTransaction(1234);
+await onPayApi.Transactions.CancelTransaction("e3db3678-836f-11e8-846a-0dd9ab50386c");
 ```
 
 ### Subscriptions
 ```csharp
 // Get subscription details
-await onPayApi.Subscriptions.GetSubscription(1234);
+await onPayApi.Subscriptions.GetSubscription("e3db3678-836f-11e8-846a-0dd9ab50386c");
 
 // Cancel subscription
-await onPayApi.Subscriptions.CancelSubscription(1234);
+await onPayApi.Subscriptions.CancelSubscription("e3db3678-836f-11e8-846a-0dd9ab50386c");
 
 // Authorize new transaction by subscription
-await onPayApi.Subscriptions.AuthorizeSubscription(1234, 100, "OrderId");
+await onPayApi.Subscriptions.AuthorizeSubscription("e3db3678-836f-11e8-846a-0dd9ab50386c", 100, "OrderId");
 ```
 
 ## Payment window
