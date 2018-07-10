@@ -116,6 +116,12 @@ namespace PI.OnPay
             // Generate HMAC
             var hmac = GenerateSHA1(windowParams, pw.WindowSecret);
             windowParams.Add("onpay_hmac_sha1", hmac);
+
+            // Add custom parameters
+            foreach (var item in pw.CustomKeys)
+            {
+                windowParams.Add(item.Key, item.Value);
+            }
             
             return windowParams;
         }
