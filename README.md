@@ -31,9 +31,27 @@ var refreshTokenResponse = await onPayAuth.GetAccessTokenByRefreshToken(accessTo
 
 ## API
 
+To use the API you need a access token. See example above.
 ```csharp
 var onPayApi = new OnPayApi("accessToken");
 ```
+
+### Resource identifier
+
+All single item methods supports identifier as `Guid`, `int` and `string`.
+```csharp
+// Guid example
+var transactionGuid = Guid.Parse("e3db3678-836f-11e8-846a-0dd9ab50386c");
+await onPayApi.Transactions.GetTransaction(transactionGuid);
+
+// Int example
+await onPayApi.Transactions.GetTransaction(1234);
+
+// String examples
+await onPayApi.Transactions.GetTransaction("1234");
+await onPayApi.Transactions.GetTransaction("e3db3678-836f-11e8-846a-0dd9ab50386c");
+```
+
 
 ### Transactions
 ```csharp
