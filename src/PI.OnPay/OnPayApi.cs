@@ -8,11 +8,6 @@ namespace PI.OnPay
         private readonly string _accessToken;
         private readonly IRestClient _resourceClient;
 
-        public OnPayApi() : this("")
-        {
-
-        }
-
         public OnPayApi(string accessToken)
         {
             _accessToken = accessToken;
@@ -26,15 +21,7 @@ namespace PI.OnPay
             _accessToken = accessToken;
             _resourceClient = resourceClient;
         }
-
-        public IAuthenticationResources Authentication
-        {
-            get
-            {
-                return new AuthenticationResources(_resourceClient);
-            }
-        }
-
+        
         public ITransactionResources Transactions
         {
             get

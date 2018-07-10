@@ -9,33 +9,30 @@ A .NET SDK for developing against the OnPay.io platform.
 ## Requirements
 .NET Framework 4.5.2 or .NET Standard 2.0
 
-## API usage
+## Authentication
 
-### Already has access token
+Authentication is done through OAUTH2.
+
+It is not necessary to register clients prior to usage, the client id should be set to the domain name of the integration owner.
+
+```csharp
+var onPayAuth = new OnPayAuthentication("clientId");
+
+// Step 1: Redirect user to the returned url
+var authUrl = await onPayAuth.GetAuthorizeUrl("gatewayId", "https://localhost:1337/onpay-auth");
+
+// Step 2: Read 'code' from query to get a access token
+var authorizationCode = Request.QueryString["code"];
+var accessTokenResponse = await onPayAuth.GetAccessTokenByAuthorizationCode(authorizationCode, "redirectUri");
+
+// Use refresh token to generate new valid access token
+var refreshTokenResponse = await onPayAuth.GetAccessTokenByRefreshToken(accessTokenResponse.refresh_token);
+```
+
+## API
+
 ```csharp
 var onPayApi = new OnPayApi("accessToken");
-```
-
-### Need a access token
-```csharp
-var onPayApi = new OnPayApi();
-
-// Get authorize url, and redirect to url
-// Read 'code' from query on callback - see section 'Authentication'
-// Remember to create an new instance of OnPayApi with access token as constructor parameter
-var authorizeUrl = await onPayApi.Authentication.GetAuthorizeUrl("1234567890", "clientId", "https://localhost:1337/onpay-auth");
-```
-
-#### Get access token
-```csharp
-// Get access token by authorization code
-var authorizationCode = Request.QueryString["code"];
-var response1 = await onPayApi.Authentication.GetAccessTokenByAuthorizationCode("clientId", "authorizationCode", "redirectUri");
-var accessToken1 = response1.access_token;
-
-// Get access token by refresh token
-var response2 = await onPayApi.Authentication.GetAccessTokenByRefreshToken("clientId", response1.refresh_token);
-var accessToken2 = response2.access_token; 
 ```
 
 ### Transactions
@@ -67,7 +64,7 @@ await onPayApi.Subscriptions.CancelSubscription(1234);
 await onPayApi.Subscriptions.AuthorizeSubscription(1234, 100, "OrderId");
 ```
 
-## Payment window usage
+## Payment window
 
 Creating parameters for the payment window is done through a fluent flow.
 
